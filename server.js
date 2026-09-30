@@ -63,10 +63,15 @@ app.get("/login", (req, res) => {
 
 // Check password
 app.post("/login", async (req, res) => {
+    console.log("Password received:", !!req.body.password);
+    console.log("Password length:", req.body.password ? req.body.password.length : 0);
+
     const passwordCorrect = await bcrypt.compare(
         req.body.password,
         passwordHash
     );
+
+    console.log("Password correct:", passwordCorrect);
 
     if (passwordCorrect) {
         req.session.loggedIn = true;
