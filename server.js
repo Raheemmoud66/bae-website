@@ -5,6 +5,8 @@ const bcrypt = require("bcrypt");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.set("trust proxy", 1);
+
 // Allow Express to read form data
 app.use(express.urlencoded({ extended: true }));
 // Serve website files such as HTML, CSS and images;
